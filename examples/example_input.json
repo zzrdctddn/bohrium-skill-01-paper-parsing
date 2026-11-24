@@ -1,0 +1,15 @@
+{
+  "case_id": "DEMO-NOT-A-REAL-CASE",
+  "note": "以下为演示接口的虚构示例，非官方测试案例，不构成正式答案。PDF 路径与 bbox 均为占位示意。",
+  "task": "按原版面顺序解析这份双栏科研 PDF，还原章节层级、表格结构与公式符号，每个关键结果指回页码区块",
+  "params": {
+    "focus": ["multi_column_order", "table_structure", "equation", "provenance"],
+    "language": "en",
+    "need_fields": ["title", "authors", "abstract", "sections", "tables", "equations"],
+    "evidence_scope": "表1的参数设置、式(3)的符号、第2节首段的定义"
+  },
+  "materials": {
+    "pdf": "/input/materials/demo_paper.pdf",
+    "task_md": "/input/task.md"
+  }
+}
