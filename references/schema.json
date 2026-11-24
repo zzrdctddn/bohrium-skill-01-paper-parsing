@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "layout-aware-doc-parser result.json",
+  "type": "object",
+  "required": ["case_id", "status", "artifact", "source_anchor_map", "self_check"],
+  "properties": {
+    "case_id": { "type": "string" },
+    "status": { "enum": ["success", "partial", "blocked"] },
+    "artifact": {
+      "type": "object",
+      "required": ["title", "authors", "affiliations", "abstract", "sections", "figures", "tables", "reading_order"],
+      "properties": {
+        "title": { "type": "string" },
+        "authors": { "type": "array", "items": { "type": "string" } },
+        "affiliations": { "type": "array", "items": { "type": "string" } },
+        "abstract": { "type": "string" },
+        "sections": { "type": "array", "items": { "type": "object" } },
+        "figures": { "type": "array", "items": { "type": "object" } },
+        "tables": { "type": "array", "items": { "type": "object" } },
+        "reading_order": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "block_provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["block_id", "type", "page", "bbox", "confidence", "status"],
+        "properties": {
+          "block_id": { "type": "string" },
+          "type": { "enum": ["title", "author", "affiliation", "abstract", "body", "section_heading", "figure_caption", "table_caption", "footnote", "reference", "header", "footer", "equation"] },
+          "text": { "type": "string" },
+          "page": { "type": "integer", "minimum": 1 },
+          "bbox": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 },
+          "reading_order_index": { "type": "integer" },
+          "confidence": { "enum": ["high", "medium", "low"] },
+          "status": { "enum": ["ok", "uncertain", "unreadable"] }
+        }
+      }
+    },
+    "reading_order_map": { "type": "array", "items": { "type": "object" } },
+    "section_tree": { "type": "array", "items": { "type": "object" } },
+    "table_structures": { "type": "array", "items": { "type": "object" } },
+    "equation_registry": { "type": "array", "items": { "type": "object" } },
+    "source_anchor_map": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim", "block_id", "page", "bbox", "basis"],
+        "properties": {
+          "claim": { "type": "string" },
+          "block_id": { "type": "string" },
+          "page": { "type": "integer" },
+          "bbox": { "type": "array", "items": { "type": "number" }, "minItems": 4, "maxItems": 4 },
+          "basis": { "type": "string" }
+        }
+      }
+    },
+    "uncertainties": { "type": "array", "items": { "type": "string" } },
+    "human_review_items": { "type": "array", "items": { "type": "string" } },
+    "change_log": { "type": "array", "items": { "type": "object" } },
+    "self_check": {
+      "type": "object",
+      "required": ["all_extracted", "order_correct", "structures_restored", "provenance_complete"],
+      "properties": {
+        "all_extracted": { "type": "boolean" },
+        "order_correct": { "type": "boolean" },
+        "structures_restored": { "type": "boolean" },
+        "provenance_complete": { "type": "boolean" }
+      }
+    }
+  }
+}
