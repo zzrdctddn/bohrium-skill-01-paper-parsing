@@ -1,0 +1,53 @@
+{
+  "case_id": "DEMO-NOT-A-REAL-CASE",
+  "status": "success",
+  "note": "示意输出，非真实案例结果；bbox、文本与结论均为占位示意，不代表任何真实 PDF。",
+  "artifact": {
+    "title": "A Demonstrative Title of a Two-Column Paper",
+    "authors": ["A. Author", "B. Author"],
+    "affiliations": ["Demo Institute"],
+    "abstract": "（示意摘要逐字文本）",
+    "sections": [
+      {"section_id": "S2", "level": 1, "number": "2", "title": "Method", "page": 2, "text": "（示意正文）"}
+    ],
+    "figures": [
+      {"fig_id": "Fig1", "caption": "（示意图题注）", "page": 3}
+    ],
+    "tables": [
+      {"table_id": "T1", "caption": "（示意表题注）", "page": 3}
+    ],
+    "reading_order": ["B001", "B002", "B003"]
+  },
+  "block_provenance": [
+    {"block_id": "B001", "type": "body", "text": "（示意正文逐字）", "page": 1, "bbox": [60, 80, 300, 200], "reading_order_index": 1, "confidence": "high", "status": "ok"},
+    {"block_id": "B002", "type": "footer", "text": "1", "page": 1, "bbox": [280, 760, 300, 780], "reading_order_index": 0, "confidence": "high", "status": "ok"}
+  ],
+  "reading_order_map": [
+    {"page": 1, "column": "left", "sequence": 1, "block_id": "B001", "note": "左栏首块，先于右栏"}
+  ],
+  "section_tree": [
+    {"section_id": "S2", "level": 1, "title": "Method", "number": "2", "parent": null, "page": 2}
+  ],
+  "table_structures": [
+    {"table_id": "T1", "page": 3, "rows": 3, "cols": 4, "header_rows": [0], "cells": [
+      {"row": 0, "col": 0, "rowspan": 1, "colspan": 1, "text": "Method"}
+    ], "continuation": {"continued_from": null, "continued_on_page": null}}
+  ],
+  "equation_registry": [
+    {"eq_id": "E3", "page": 4, "number": "(3)", "text": "y = αx + β（示意）", "symbols": ["α", "β"], "symbol_uncertain": false}
+  ],
+  "source_anchor_map": [
+    {"claim": "表1列出3组参数（示意）", "block_id": "B014", "page": 3, "bbox": [70, 400, 540, 560], "basis": "题注+表格几何"}
+  ],
+  "uncertainties": ["页码为示意占位，实际以真实 PDF 为准"],
+  "human_review_items": [],
+  "change_log": [
+    {"step": 2, "action": "将左栏末块顺序调到右栏首块之前", "reason": "初版按纯 y 排序导致串栏"}
+  ],
+  "self_check": {
+    "all_extracted": true,
+    "order_correct": true,
+    "structures_restored": true,
+    "provenance_complete": true
+  }
+}
